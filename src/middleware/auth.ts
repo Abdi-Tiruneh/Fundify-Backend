@@ -1,12 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { BadRequestError, UnauthorizedError } from "../errors/CustomErrors";
-
-const JWT_PRIVATE_KEY: Secret | undefined = process.env.JWT_PRIVATE_KEY;
-
-interface CustomRequest extends Request {
-  token: string | JwtPayload;
-}
 
 export default function authenticateToken(
   req: Request,
@@ -16,12 +10,14 @@ export default function authenticateToken(
   const token = req.header("x-auth-token");
   if (!token) throw new UnauthorizedError("No token provided.");
 
-  if (!JWT_PRIVATE_KEY)
+  const privateKey = process.env.JWT_PRIVATE_KEY;
+
+  if (!privateKey)
     throw new Error("JWT_PRIVATE_KEY environment variable is not set.");
 
   try {
-    const decoded = jwt.verify(token, JWT_PRIVATE_KEY);
-    (req as CustomRequest).token = decoded;
+    const decoded = jwt.verify(token, privateKey);
+    req.body = decoded;
     next();
   } catch (ex) {
     if (ex instanceof jwt.TokenExpiredError)
