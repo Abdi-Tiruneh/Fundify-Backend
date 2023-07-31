@@ -26,7 +26,7 @@ Fundify is a comprehensive crowdfunding platform that allows users to engage in 
 
 ## Technologies Used
 
-- **Backend**: Node.js and Express.js for building a scalable and performant backend API.
+- **Backend**: Node.js, Express.js, and TypeScript for building a scalable and performant backend API.
 - **Database**: PostgreSQL, a powerful and reliable relational database, for storing campaign and user data.
 - **Caching**: Redis, an in-memory data store, for caching frequently accessed data and improving application performance.
 - **Payment Integration**: Integration with popular payment gateways like Stripe and PayPal for handling secure and reliable payment transactions.
@@ -47,8 +47,8 @@ To run the Fundify backend locally, follow these steps:
 3. Configure the environment variables:
    - Create a `.env` file in the root directory of the project.
    - Set the necessary environment variables such as database connection details, Stripe API keys, etc.
-4. Start the server: `npm start` or `node server.js`
-5. The backend server should now be running at `http://localhost:3000`.
+4. Start the server: `nodemon .\src\server.ts`
+5. The backend server should now be running at `http://localhost:5000`.
 
 Note: This is a basic setup guide, and you may need to make adjustments based on your specific environment and deployment requirements.
 
