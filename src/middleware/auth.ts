@@ -2,6 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { BadRequestError, UnauthorizedError } from "../errors/CustomErrors";
 
+interface DecodedUser {
+  isAdmin: boolean;
+  userId: string;
+  username: string;
+  email: string;
+}
+
 export default function authenticateToken(
   req: Request,
   _res: Response,
@@ -16,8 +23,8 @@ export default function authenticateToken(
     throw new Error("JWT_PRIVATE_KEY environment variable is not set.");
 
   try {
-    const decoded = jwt.verify(token, privateKey);
-    req.body = decoded;
+    const decoded = jwt.verify(token, privateKey) as DecodedUser;
+    req.user = decoded;
     next();
   } catch (ex) {
     if (ex instanceof jwt.TokenExpiredError)
