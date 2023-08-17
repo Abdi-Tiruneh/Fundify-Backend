@@ -25,12 +25,6 @@ interface CampaignAttributes {
   enabled: boolean;
   approvedAt: Date | null;
   approvedBy: string | null;
-  pausedAt: Date | null;
-  pausedBy: string | null;
-  suspendedAt: Date | null;
-  suspendedBy: string | null;
-  resumedAt: Date | null;
-  resumedBy: string | null;
   completedAt: Date | null;
 }
 
@@ -66,12 +60,6 @@ class Campaign
   public enabled!: boolean;
   public approvedAt!: Date | null;
   public approvedBy!: string | null;
-  public pausedAt!: Date | null;
-  public pausedBy!: string | null;
-  public suspendedAt!: Date | null;
-  public suspendedBy!: string | null;
-  public resumedAt!: Date | null;
-  public resumedBy!: string | null;
   public completedAt!: Date | null;
 
   public readonly createdAt!: Date;
@@ -140,30 +128,6 @@ Campaign.init(
       allowNull: true,
     },
     approvedBy: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    pausedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    pausedBy: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    suspendedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    suspendedBy: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    resumedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    resumedBy: {
       type: DataTypes.STRING,
       allowNull: true,
     },

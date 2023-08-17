@@ -32,8 +32,6 @@ class User
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  public static associations: {};
-
   public static initModel(): void {
     User.init(
       {

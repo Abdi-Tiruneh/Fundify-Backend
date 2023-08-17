@@ -3,13 +3,13 @@ import { sequelize } from "../config/database";
 import Joi from "joi";
 
 interface CampaignTypeAttributes {
-  campaignTypeId: string;
+  id: string;
   name: string;
   description: string | null;
 }
 
 interface CampaignTypeCreationAttributes
-  extends Optional<CampaignTypeAttributes, "campaignTypeId"> {}
+  extends Optional<CampaignTypeAttributes, "id"> {}
 
 class CampaignType extends Model<
   CampaignTypeAttributes,
@@ -25,7 +25,7 @@ class CampaignType extends Model<
   public static initModel(): void {
     CampaignType.init(
       {
-        campaignTypeId: {
+        id: {
           type: DataTypes.UUID,
           defaultValue: DataTypes.UUIDV4,
           primaryKey: true,
