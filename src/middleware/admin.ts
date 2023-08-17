@@ -6,6 +6,7 @@ export default function checkAdmin(
   _res: Response,
   next: NextFunction
 ) {
+  //@ts-ignore
   if (!req.user.isAdmin) throw new ForbiddenError("Access denied.");
 
   next();

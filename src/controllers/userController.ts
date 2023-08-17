@@ -38,6 +38,7 @@ export async function getUser(
   res: Response,
   _next: NextFunction
 ) {
+  //@ts-ignore
   const { userId } = req.user;
   const user = await getUserService(userId);
   return res.json(user);
@@ -48,6 +49,7 @@ export async function updateUser(
   res: Response,
   _next: NextFunction
 ) {
+  //@ts-ignore
   const { userId } = req.user;
   const { firstName, lastName, username } = req.body;
   const updatedData = { firstName, lastName, username };

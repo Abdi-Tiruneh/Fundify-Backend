@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/user";
 import { UnauthorizedError, BadRequestError } from "../errors/CustomErrors";
 
-const EXPIRATION_TIME = "7d";
+const EXPIRATION_TIME = "14d";
 
 export default async function authService(
   usernameOrEmail: string,

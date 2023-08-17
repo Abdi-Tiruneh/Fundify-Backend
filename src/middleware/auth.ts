@@ -24,6 +24,7 @@ export default function authenticateToken(
 
   try {
     const decoded = jwt.verify(token, privateKey) as DecodedUser;
+    //@ts-ignore
     req.user = decoded;
     next();
   } catch (ex) {
